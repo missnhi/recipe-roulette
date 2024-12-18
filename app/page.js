@@ -10,20 +10,10 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [showRecipe, setShowRecipe] = useState(false);
   const lottieRef = useRef(null);
-  // useEffect(() => {
-  //   if (lottieRef.current) {
-  //     lottieRef.current.addEventListener('load', () => {
-  //       lottieRef.current.play();
-  //     });
-  //   }
-  // }, []);
   
   const onClickLoading = () => {
     console.log('Should now show the recipe');
     setLoading(true);
-    // if (lottieRef.current) {
-    //   lottieRef.current.play();
-    // }
     setTimeout(() => {
       setLoading(false);
       setShowRecipe(true);

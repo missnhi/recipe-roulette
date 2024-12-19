@@ -1,24 +1,42 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 async function main() {
-  const user = await prisma.user.create({
-    data: {
-      name: 'Alice',
-      email: 'alice@prisma.io',
-      password: 'password123'
+  const users = [
+    {
+      name: "Alice",
+      email: "alice@prisma.io",
+      password: "password123",
     },
-  })
-  console.log(user)
+    {
+      name: "Chef Gordon",
+      email: "realramsey@chef.com",
+      password: "password234",  
+    },
+    {
+      name: "Random Person",
+      email: "therandomone@proton.com",
+      password: "randompass567"
+    }
+  ];
+
+ 
+  for (const user of users) {
+    await prisma.user.upsert({
+      where: { email: user.email },
+      update: {},
+      create: user,
+    });
+  }
+  console.log((await prisma.user.findMany()).map(user => user));
 }
 
 main()
-  .then(async () => {
-    await prisma.$disconnect()
+  .catch(e => {
+    console.error(e);
+    process.exit(1);
   })
-  .catch(async (e) => {
-    console.error(e)
-    await prisma.$disconnect()
-    process.exit(1)
-  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });

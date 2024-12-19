@@ -59,7 +59,7 @@ model Favourite {
 }
 
 model DietaryRestriction {
-  id                       Int    @id @default(autoincrement())
+  id                       Int                      @id @default(autoincrement())
   name                     String
   usersDietaryRestrictions UserDietaryRestriction[]
 }

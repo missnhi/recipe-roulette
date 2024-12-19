@@ -2,35 +2,6 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-### Create recipe_roulette database
-
----
-
-Start postgres server with `startpostgres` in your terminal
-Then enter `psql` or `psql -U <username>` to login into psql.
-
-Then enter your password for the username for LHL its `labber` by default and `labber` as password by default.
-
-Create a database in this case type in the psql console `create DATABASE recipe_roulette;` check to see if your database is in the list with `\l`
-
-Ensure that prisma dependency is installed `npm install` should be enough!
-
-Create a `.env` file and copy the contents from `env.example` template file:
-
-```
-DATABASE_URL="postgresql://<psqlusername>:<password>@localhost:5432/<database_name>"
-```
-
-and change it to:
-
-```
-DATABASE_URL="postgresql://labber:labber@localhost:5432/recipe_roulette"
-```
-
-to locate your psql db.
-
----
-
 First, run the development server:
 
 ```bash
@@ -48,6 +19,36 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/index.js`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Create "recipe_roulette" Database
+
+Start postgres server with `startpostgres` in your terminal.
+
+Enter `psql` or `psql -U <username>` to login into psql.
+
+Enter your password for the username (for LHL the username is `labber` and password is `labber` by default).
+
+Create a database in the psql console by typing: `create DATABASE recipe_roulette;`.
+
+Check to see if your new database now exists in the list with: `\l`.
+
+Ensure that prisma dependency is installed with: `npm install`.
+
+Create a `.env` file and copy the contents from `env.example` template file:
+
+```
+DATABASE_URL="postgresql://<psqlusername>:<password>@localhost:5432/<database_name>"
+```
+
+Change it to:
+
+```
+DATABASE_URL="postgresql://labber:labber@localhost:5432/recipe_roulette"
+```
+
+to locate your psql db.
+
+---
 
 ## Learn More
 

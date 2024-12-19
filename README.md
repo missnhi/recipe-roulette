@@ -15,10 +15,19 @@ Create a database in this case type in the psql console `create DATABASE recipe_
 
 Ensure that prisma dependency is installed `npm install` should be enough!
 
-Create a `.env` file and use this
-`DATABASE_URL="postgresql://<psqlusername>:<password>@localhost:5432/<database_name>"` to locate your psql db
-for example <br>
-`DATABASE_URL="postgresql://labber:labber@localhost:5432/recipe_roulette"`
+Create a `.env` file and copy the contents from `env.example` template file:
+
+```
+DATABASE_URL="postgresql://<psqlusername>:<password>@localhost:5432/<database_name>"
+```
+
+and change it to:
+
+```
+DATABASE_URL="postgresql://labber:labber@localhost:5432/recipe_roulette"
+```
+
+to locate your psql db.
 
 ---
 

@@ -2,6 +2,24 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+### Create recipe_roulette database
+---
+Start postgres server with `startpostgres` in your terminal
+Then enter `psql` or `psql -U <username>` to login into psql. 
+
+Then enter your password for the username for LHL its `labber` by default and `labber` as password by default.
+
+Create a database in this case type in the psql console `create database recipe_roulette;` check to see if your database is in the list with `\l`
+
+Ensure that prisma dependency is installed  `npm install` should be enough!
+
+Create a `.env` file and use this 
+`DATABASE_URL="postgresql://<psqlusername>:<password>@localhost:5432/<database_name>"` to locate your psql db
+for example <br>
+`DATABASE_URL="postgresql://labber:labber@localhost:5432/recipe_roulette"`
+
+---
+
 First, run the development server:
 
 ```bash

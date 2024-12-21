@@ -12,8 +12,19 @@ import { useState, useRef, useEffect } from "react";
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [showRecipe, setShowRecipe] = useState(false);
+  const [users, setUsers] = useState([])
   const lottieRef = useRef(null);
   
+
+  useEffect(()=> {
+    const fetchUsers = async() => {
+      const response = await fetch('/api/users');
+      const data = await response.json();
+      setUsers(data);
+    };
+
+    fetchUsers();
+  })
   const onClickLoading = () => {
     console.log('Should now show the recipe');
     setLoading(true);
@@ -77,6 +88,12 @@ export default function Home() {
           RECIPE!!!!!!!!!!<br></br>
           RECIPE!!!!!!!!!!
         </div>)}
+        <h1> USERS</h1>
+        <ul>
+          {users.map((user)=> (
+            <li key={user.id}> {user.name} - {user.email}</li>
+          ))}
+        </ul>
       </main>
       <footer>
       

@@ -29,7 +29,9 @@ async function main() {
       create: user,
     });
   }
-  console.log((await prisma.user.findMany()).map(user => user));
+ console.log((await prisma.user.findMany()).map(user => user));
+
+ 
 }
 
 main()

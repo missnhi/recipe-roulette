@@ -138,8 +138,10 @@ async function main() {
 
   //only creates one instance of recipes
   for (const recipe of recipes) {
-    await prisma.recipe.create({
-      data: recipe,
+    await prisma.recipe.upsert({
+      where: {title: recipe.title},
+      update : {},
+      create: recipe,
     });
   }
 

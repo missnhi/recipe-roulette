@@ -1,28 +1,56 @@
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import prisma from "@/lib/prisma";
 
 export async function GET(req, res) {
-  const users = await prisma.user.findMany();
-  return new Response(JSON.stringify(users), {
-    status: 200,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  return prisma.user.findMany()
+    .then(users => {
+      return new Response(JSON.stringify(users), {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    })
+    .catch(error => {
+      console.error("Error fetching users:", error);
+      return new Response(JSON.stringify({ error: "Error fetching users" }), {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    })
+    .finally(() => {
+      prisma.$disconnect();
+    });
 }
 
 export async function POST(req, res) {
-  const { name, email } = await req.json();
-  const user = await prisma.user.create({
-    data: { name, email },
-  });
-  return new Response(JSON.stringify(user), {
-    status: 201,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  return req.json()
+    .then(({ name, email }) => {
+      return prisma.user.create({
+        data: { name, email },
+      });
+    })
+    .then(user => {
+      return new Response(JSON.stringify(user), {
+        status: 201,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    })
+    .catch(error => {
+      console.error("Error creating user:", error);
+      return new Response(JSON.stringify({ error: "Error creating user" }), {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    })
+    .finally(() => {
+      prisma.$disconnect();
+    });
 }
 
 export async function PUT(req, res) {
@@ -31,14 +59,7 @@ export async function PUT(req, res) {
     headers: {
       'Content-Type': 'text/plain',
     },
-  });
-}
-
-export async function DELETE(req, res) {
-  return new Response('<h1>This is an HTML response</h1>', {
-    status: 200,
-    headers: {
-      'Content-Type': 'text/html',
-    },
+  }).finally(() => {
+    prisma.$disconnect();
   });
 }

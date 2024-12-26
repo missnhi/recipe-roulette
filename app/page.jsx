@@ -4,7 +4,6 @@ import "../styles/lottie.css";
 import "../styles/header.css";
 import "../styles/recipe-div.css";
 import "../styles/footer.css";
-import { PrismaClient } from "@prisma/client";
 import { useState, useRef, useEffect } from "react";
 
 
@@ -13,6 +12,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [showRecipe, setShowRecipe] = useState(false);
   const [users, setUsers] = useState([])
+  const [recipes, setRecipes] = useState([])
   const lottieRef = useRef(null);
   
 
@@ -23,8 +23,15 @@ export default function Home() {
       setUsers(data);
     };
 
+    const fetchRecipes = async() => {
+      const response  = await fetch('/api/recipes');
+      const data = await response.json();
+      setRecipes(data);
+    }
+
     fetchUsers();
-  })
+    fetchRecipes();
+  }, [])
   const onClickLoading = () => {
     console.log('Should now show the recipe');
     setLoading(true);
@@ -93,6 +100,15 @@ export default function Home() {
           {users.map((user)=> (
             <li key={user.id}> {user.name} - {user.email}</li>
           ))}
+        </ul>
+
+        <h1>All Recipes In Database</h1>
+        <ul>
+          {
+            recipes.map((recipe)=> (
+              <li key = {recipe.id}>{recipe.title}</li>
+            ))
+          }
         </ul>
       </main>
       <footer>

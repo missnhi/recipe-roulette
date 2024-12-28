@@ -5,6 +5,7 @@ import "../styles/header.css";
 import "../styles/recipe-div.css";
 import "../styles/footer.css";
 import { useState, useRef, useEffect } from "react";
+import LoginForm from "./components/LoginForm";
 
 
 
@@ -110,6 +111,7 @@ export default function Home() {
             ))
           }
         </ul>
+        <LoginForm></LoginForm>
       </main>
       <footer>
       

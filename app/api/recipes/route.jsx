@@ -1,4 +1,4 @@
-import prisma from "@/lib/prisma";
+import prisma from "@/prisma/prisma";
 
 export async function GET(req, res) {
   return prisma.recipe.findMany()

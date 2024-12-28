@@ -5,9 +5,9 @@ return (
   <div>
     <form onSubmit={handleLoginFormSubmit}>
       <label>Email: </label>
-      <input type="email" id="email"></input>
+      <input type="text" id="email"></input>
       <label>Password: </label>
-      <input type="password" id="password"></input>
+      <input type="text" id="password"></input>
       <button type="submit">Submit</button>
     </form>
   </div>

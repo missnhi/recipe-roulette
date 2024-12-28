@@ -21,7 +21,9 @@ export default function handleLoginFormSubmit(e) {
   .then(response => {
     // Check if the response is OK (status code is in the range 200-299)
     if (!response.ok) {
+      alert(JSON.stringify("Invalid Information", null, 2));
       throw new Error('Network response was not ok');
+      
     }
     // Read the response text and parse it as JSON if it is not empty
     return response.text().then(text => text ? JSON.parse(text) : {});

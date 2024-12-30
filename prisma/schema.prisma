@@ -13,27 +13,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// model User {
-//   id    Int     @id @default(autoincrement())
-//   email String  @unique
-//   name  String?
-//   posts Post[]
-// }
-
-// model Post {
-//   id        Int     @id @default(autoincrement())
-//   title     String
-//   content   String?
-//   published Boolean @default(false)
-//   author    User    @relation(fields: [authorId], references: [id])
-//   authorId  Int
-// }
-
-
 model User {
   id                       Int                      @id @default(autoincrement())
-  email                    String                   @unique 
-  name                     String? 
+  email                    String                   @unique
+  name                     String?
   password                 String
   favourites               Favourite[]
   usersDietaryRestrictions UserDietaryRestriction[]
@@ -41,7 +24,7 @@ model User {
 
 model Recipe {
   id           Int         @id @default(autoincrement())
-  title        String
+  title        String      @unique
   ingredients  String[]
   instructions String
   image        String?
@@ -53,9 +36,11 @@ model Recipe {
 model Favourite {
   id        Int    @id @default(autoincrement())
   user      User   @relation(fields: [user_id], references: [id])
-  user_id   Int 
+  user_id   Int
   recipe    Recipe @relation(fields: [recipe_id], references: [id])
-  recipe_id Int 
+  recipe_id Int
+
+  @@unique([user_id, recipe_id])
 }
 
 model DietaryRestriction {
@@ -70,6 +55,8 @@ model UserDietaryRestriction {
   user_id               Int
   dietaryRestriction    DietaryRestriction @relation(fields: [dietaryRestriction_id], references: [id])
   dietaryRestriction_id Int
+
+  @@unique([user_id, dietaryRestriction_id])
 }
 
 // -- users: Stores user details, preferences, and saved recipes:
@@ -83,49 +70,3 @@ model UserDietaryRestriction {
 
 // -- dietaryRestrictions: A list of known dietary restrictions:
 // -- Attributes: id, name
-
-// -- userDietaryRestrictions: Holds data for users and dietaryRestricition choices:
-// -- Attributes: id, user_id, dietaryRestrictions_id
-// DROP TABLE IF EXISTS userDietaryRestrictions CASCADE;
-// DROP TABLE IF EXISTS dietaryRestrictions CASCADE;
-// DROP TABLE IF EXISTS favourites CASCADE;
-// DROP TABLE IF EXISTS recipes CASCADE;
-// DROP TABLE IF EXISTS users CASCADE;
-
-// CREATE TABLE users (
-//   id SERIAL PRIMARY KEY,
-//   name VARCHAR(255) NOT NULL,
-//   email VARCHAR(255) UNIQUE NOT NULL,
-//   password VARCHAR(255) NOT NULL
-// );
-
-// CREATE TABLE recipes (
-//   id SERIAL PRIMARY KEY,
-//   title VARCHAR(255) NOT NULL,
-//   ingredients TEXT NOT NULL,
-//   instructions TEXT NOT NULL,
-//   image VARCHAR(255),
-//   cuisine VARCHAR(255),
-//   meal VARCHAR(255)
-// );
-
-// CREATE TABLE favourites (
-//   id SERIAL PRIMARY KEY,
-//   user_id INTEGER NOT NULL,
-//   recipe_id INTEGER NOT NULL,
-//   FOREIGN KEY (user_id) REFERENCES users(id),
-//   FOREIGN KEY (recipe_id) REFERENCES recipes(id)
-// );
-
-// CREATE TABLE dietaryRestrictions (
-//   id SERIAL PRIMARY KEY,
-//   name VARCHAR(255) NOT NULL
-// );
-
-// CREATE TABLE userDietaryRestrictions (
-//   id SERIAL PRIMARY KEY,
-//   user_id INTEGER NOT NULL,
-//   dietary_restriction_id INTEGER NOT NULL,
-//   FOREIGN KEY (user_id) REFERENCES users(id),
-//   FOREIGN KEY (dietary_restriction_id) REFERENCES dietaryRestrictions(id)
-// );

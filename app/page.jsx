@@ -6,6 +6,7 @@ import "../styles/recipe-div.css";
 import "../styles/footer.css";
 import { useState, useRef, useEffect } from "react";
 import LoginForm from "./components/LoginForm";
+import RecipeInfoBoard from "./components/RecipeInfoBoard";
 
 
 
@@ -61,7 +62,7 @@ export default function Home() {
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </div>
-        <div className="nav-center lexend-font">RECIPE ROULETTE</div>
+        <div className="nav-center lexend-font nav-title">RECIPE ROULETTE</div>
         
         <div className="nav-right">
           <a href="#signin">Sign In</a>
@@ -72,7 +73,7 @@ export default function Home() {
         
         <div className="dotlottie-player-container">
           <div> CLICK </div>
-          <button onClick={onClickLoading}>
+          <button className="dotlottie-button" onClick={onClickLoading}>
             <div ref={lottieRef}>
               <dotlottie-player
                 src="https://lottie.host/cf4b572d-fada-4365-aa08-b3a0545cef4a/WtIaO5mAdH.lottie"
@@ -89,15 +90,15 @@ export default function Home() {
       
       </header>
       <main className="recipe-div">
-        {showRecipe && (<div>
-          This is where the recipe will be shown <br></br>
-          RECIPE!!!!!!!!!!<br></br>
-          RECIPE!!!!!!!!!!<br></br>
-          RECIPE!!!!!!!!!!<br></br>
-          RECIPE!!!!!!!!!!
+        {showRecipe && (<div>          
+          <RecipeInfoBoard>
+          
+          </RecipeInfoBoard>
         </div>)}
+        <div style = {{borderTop:"solid white", backgroundColor:"#480025"}}>
+          <h1>Delete after testing is done!</h1>
         <h1> USERS</h1>
-        <ul>
+        <ul >
           {users.map((user)=> (
             <li key={user.id}> {user.name} - {user.email} - {user.password}</li>
           ))}
@@ -112,6 +113,8 @@ export default function Home() {
           }
         </ul>
         <LoginForm></LoginForm>
+        </div>
+        
       </main>
       <footer>
       

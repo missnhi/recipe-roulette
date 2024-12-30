@@ -44,17 +44,19 @@ export default function Home() {
   };
   return (
     <div>
+       <title>Recipe Roulette</title>
       <script
         src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
         type="module"
       ></script>
+      <link rel="icon" type="image/ico" href="./favicon.ico" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
       <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Lexend:wght@100..900&display=swap"
         rel="stylesheet"
       ></link>
-      <title>Recipe Roulette</title>
+     
       
       <nav>
         <div className="nav-left">

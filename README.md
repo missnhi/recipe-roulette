@@ -48,6 +48,10 @@ DATABASE_URL="postgresql://labber:labber@localhost:5432/recipe_roulette"
 
 to locate your psql db.
 
+Run `npx prisma migrate dev --name init` to create the initial migration.
+
+Run `node db/seed.js` to seed the database.
+
 ---
 
 ## Learn More

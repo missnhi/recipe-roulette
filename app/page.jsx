@@ -6,6 +6,7 @@ import "../styles/recipe-div.css";
 import "../styles/footer.css";
 import { useState, useRef, useEffect } from "react";
 import LoginForm from "./components/LoginForm";
+import RecipeInfoBoard from "./components/RecipeInfoBoard";
 
 
 
@@ -43,17 +44,19 @@ export default function Home() {
   };
   return (
     <div>
+       <title>Recipe Roulette</title>
       <script
         src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
         type="module"
       ></script>
+      <link rel="icon" type="image/ico" href="./favicon.ico" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
       <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Lexend:wght@100..900&display=swap"
         rel="stylesheet"
       ></link>
-      <title>Recipe Roulette</title>
+     
       
       <nav>
         <div className="nav-left">
@@ -61,7 +64,7 @@ export default function Home() {
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </div>
-        <div className="nav-center lexend-font">RECIPE ROULETTE</div>
+        <div className="nav-center lexend-font nav-title">RECIPE ROULETTE</div>
         
         <div className="nav-right">
           <a href="#signin">Sign In</a>
@@ -72,7 +75,7 @@ export default function Home() {
         
         <div className="dotlottie-player-container">
           <div> CLICK </div>
-          <button onClick={onClickLoading}>
+          <button className="dotlottie-button" onClick={onClickLoading}>
             <div ref={lottieRef}>
               <dotlottie-player
                 src="https://lottie.host/cf4b572d-fada-4365-aa08-b3a0545cef4a/WtIaO5mAdH.lottie"
@@ -89,15 +92,15 @@ export default function Home() {
       
       </header>
       <main className="recipe-div">
-        {showRecipe && (<div>
-          This is where the recipe will be shown <br></br>
-          RECIPE!!!!!!!!!!<br></br>
-          RECIPE!!!!!!!!!!<br></br>
-          RECIPE!!!!!!!!!!<br></br>
-          RECIPE!!!!!!!!!!
+        {showRecipe && (<div>          
+          <RecipeInfoBoard>
+          
+          </RecipeInfoBoard>
         </div>)}
+        <div style = {{borderTop:"solid white", backgroundColor:"#480025"}}>
+          <h1>Delete after testing is done!</h1>
         <h1> USERS</h1>
-        <ul>
+        <ul >
           {users.map((user)=> (
             <li key={user.id}> {user.name} - {user.email} - {user.password}</li>
           ))}
@@ -112,6 +115,8 @@ export default function Home() {
           }
         </ul>
         <LoginForm></LoginForm>
+        </div>
+        
       </main>
       <footer>
       

@@ -1,7 +1,37 @@
-
 .recipe-div {
-    margin-top: 500px;
-    padding: 10px;
-    border: 1px solid #ccc;
+    padding: 1%;
+    border: 1px hidden;
+    text-align: start;
+    background-color: #201f1f;
+    color: #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    width: 100%;
+}
+
+.recipe-title {
     text-align: center;
+}
+.recipe-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.recipe-ingredient{
+
+    align-self: flex-start;
+    text-align: right;
+}
+.recipe-prep-time {
+    align-self: flex-start;
+    text-align: left;
+}
+
+.recipe-image {
+    height: 200px;
+    width: 200px;
+    border-radius: 100%;
+    margin: 20px 0; /* Optional: Add some margin for spacing */
 }

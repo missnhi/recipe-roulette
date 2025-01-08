@@ -10,6 +10,7 @@ import RecipeInfoBoard from "./components/RecipeInfoBoard";
 
 
 
+
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [showRecipe, setShowRecipe] = useState(false);
@@ -22,7 +23,7 @@ export default function Home() {
     const fetchUsers = async() => {
       const response = await fetch('/api/users');
       const data = await response.json();
-      setUsers(data);
+      setUsers(Array.isArray(data) ? data : []);
     };
 
     const fetchRecipes = async() => {
@@ -32,15 +33,20 @@ export default function Home() {
     }
 
     fetchUsers();
-    fetchRecipes();
-  }, [])
-  const onClickLoading = () => {
+  }, []);
+  
+  const onClickLoading = async () => {
     console.log('Should now show the recipe');
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setShowRecipe(true);
-    }, 2000); // 2 seconds loading time
+    setLoading(true); // Indicate loading has started
+    const apiKey = process.env.SPOONACULAR_API_KEY;
+    const response = await fetch(
+      `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=apples,+flour,+sugar&number=2`
+    );
+    const data = await response.json();
+    console.log("RECIPES", data);
+    setRecipes(data || []);
+    setLoading(false); // Indicate loading has finished
+    setShowRecipe(true);
   };
   return (
     <div>
@@ -56,8 +62,6 @@ export default function Home() {
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Lexend:wght@100..900&display=swap"
         rel="stylesheet"
       ></link>
-     
-      
       <nav>
         <div className="nav-left">
           <a href="#home">Home</a>
@@ -92,7 +96,36 @@ export default function Home() {
       
       </header>
       <main className="recipe-div">
-        {showRecipe && (<div>          
+        {showRecipe && (
+          <div>
+            <h1>All Recipes from Spoonacular</h1>
+            <ul>
+              {recipes.map((recipe) => (
+                <li key={recipe.id}>
+                  <h2>{recipe.title}</h2>
+                  <img src={recipe.image} alt={recipe.title} />
+                  <p>ID: {recipe.id}</p>
+                  <p>Likes: {recipe.likes}</p>
+                  <p>Missed Ingredients Count: {recipe.missedIngredientCount}</p>
+                  <p>Used Ingredients Count: {recipe.usedIngredientCount}</p>
+                  <h3>Missed Ingredients:</h3>
+                  <ul>
+                    {recipe.missedIngredients.map((ingredient, index) => (
+                      <li key={index}>{ingredient.name}</li>
+                    ))}
+                  </ul>
+                  <h3>Used Ingredients:</h3>
+                  <ul>
+                    {recipe.usedIngredients.map((ingredient, index) => (
+                      <li key={index}>{ingredient.name}</li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {showRecipe && (<div>
           <RecipeInfoBoard>
           
           </RecipeInfoBoard>
@@ -100,7 +133,7 @@ export default function Home() {
         <div style = {{borderTop:"solid white", backgroundColor:"#480025"}}>
           <h1>Delete after testing is done!</h1>
         <h1> USERS</h1>
-        <ul >
+        <ul>
           {users.map((user)=> (
             <li key={user.id}> {user.name} - {user.email} - {user.password}</li>
           ))}

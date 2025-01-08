@@ -24,6 +24,12 @@ export default function Home() {
       setUsers(Array.isArray(data) ? data : []);
     };
 
+    const fetchRecipes = async() => {
+      const response  = await fetch('/api/recipes');
+      const data = await response.json();
+      setRecipes(data);
+    }
+
     fetchUsers();
   }, []);
   
@@ -42,25 +48,25 @@ export default function Home() {
   };
   return (
     <div>
+       <title>Recipe Roulette</title>
       <script
         src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
         type="module"
       ></script>
+      <link rel="icon" type="image/ico" href="./favicon.ico" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
       <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Lexend:wght@100..900&display=swap"
         rel="stylesheet"
       ></link>
-      <title>Recipe Roulette</title>
-      
       <nav>
         <div className="nav-left">
           <a href="#home">Home</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </div>
-        <div className="nav-center lexend-font">RECIPE ROULETTE</div>
+        <div className="nav-center lexend-font nav-title">RECIPE ROULETTE</div>
         
         <div className="nav-right">
           <a href="#signin">Sign In</a>
@@ -71,7 +77,7 @@ export default function Home() {
         
         <div className="dotlottie-player-container">
           <div> CLICK </div>
-          <button onClick={onClickLoading}>
+          <button className="dotlottie-button" onClick={onClickLoading}>
             <div ref={lottieRef}>
               <dotlottie-player
                 src="https://lottie.host/cf4b572d-fada-4365-aa08-b3a0545cef4a/WtIaO5mAdH.lottie"
@@ -117,14 +123,31 @@ export default function Home() {
             </ul>
           </div>
         )}
+        {showRecipe && (<div>
+          <RecipeInfoBoard>
+          
+          </RecipeInfoBoard>
+        </div>)}
+        <div style = {{borderTop:"solid white", backgroundColor:"#480025"}}>
+          <h1>Delete after testing is done!</h1>
         <h1> USERS</h1>
         <ul>
-          {users.map((user) => (
+          {users.map((user)=> (
             <li key={user.id}> {user.name} - {user.email} - {user.password}</li>
           ))}
         </ul>
-        
+
+        <h1>All Recipes In Database</h1>
+        <ul>
+          {
+            recipes.map((recipe)=> (
+              <li key = {recipe.id}>{recipe.title}</li>
+            ))
+          }
+        </ul>
         <LoginForm></LoginForm>
+        </div>
+        
       </main>
       <footer>
       

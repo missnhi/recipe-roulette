@@ -6,6 +6,8 @@ import "../styles/recipe-div.css";
 import "../styles/footer.css";
 import { useState, useRef, useEffect } from "react";
 import LoginForm from "./components/LoginForm";
+import RecipeInfoBoard from "./components/RecipeInfoBoard";
+
 
 
 

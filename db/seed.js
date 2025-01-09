@@ -104,28 +104,48 @@ async function main() {
     }
   ];
 
-  // const favourites = [
-  //   {
-  //     user_id: 1,
-  //     recipe_id: 1
-  //   },
-  //   {
-  //     user_id: 1,
-  //     recipe_id: 2
-  //   },
-  //   {
-  //     user_id: 2,
-  //     recipe_id: 3
-  //   },
-  //   {
-  //     user_id: 2,
-  //     recipe_id: 4
-  //   },
-  //   {
-  //     user_id: 3,
-  //     recipe_id: 5
-  //   }
-  // ];
+  const favourites = [
+    {
+      user_id: 1,
+      recipe_id: 1
+    },
+    {
+      user_id: 1,
+      recipe_id: 2
+    },
+    {
+      user_id: 2,
+      recipe_id: 3
+    },
+    {
+      user_id: 2,
+      recipe_id: 4
+    },
+    {
+      user_id: 3,
+      recipe_id: 5
+    }
+  ];
+
+  const dietaryRestrictions = [
+    { name: "Dairy" },
+    { name: "Egg" },
+    { name: "Gluten" },
+    { name: "Grain" },
+    { name: "Peanut" },
+    { name: "Seafood" },
+    { name: "Sesame" },
+    { name: "Shellfish" },
+    { name: "Soy" },
+    { name: "Sulfite" },
+    { name: "Tree Nut" },
+    { name: "Wheat" }
+  ];
+
+  const userDietaryRestrictions = [
+
+  ];
+
 
   for (const user of users) {
     await prisma.user.upsert({
@@ -145,18 +165,26 @@ async function main() {
     });
   }
 
-  // for (const favourite of favourites) {
-  //   await prisma.favourite.upsert({
-  //     where: {
-  //       user_id_recipe_id: {
-  //         user_id: favourite.user_id,
-  //         recipe_id: favourite.recipe_id
-  //       }
-  //     },
-  //     update: {},
-  //     create: favourite,
-  //   })
-  // }
+  for (const favourite of favourites) {
+    await prisma.favourite.upsert({
+      where: {
+        user_id_recipe_id: {
+          user_id: favourite.user_id,
+          recipe_id: favourite.recipe_id
+        }
+      },
+      update: {},
+      create: favourite,
+    })
+  }
+
+  for (const dietaryRestriction of dietaryRestrictions){
+    await prisma.dietaryRestriction.upsert({
+      where: {name: dietaryRestriction.name},
+      update: {},
+      create: dietaryRestriction
+    })
+  }
 }
 
 main()

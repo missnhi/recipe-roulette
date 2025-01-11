@@ -20,6 +20,8 @@ model User {
   password                 String
   favourites               Favourite[]
   usersDietaryRestrictions UserDietaryRestriction[]
+
+  @@index([email])
 }
 
 model Recipe {
@@ -45,7 +47,7 @@ model Favourite {
 
 model DietaryRestriction {
   id                       Int                      @id @default(autoincrement())
-  name                     String @unique
+  name                     String                   @unique
   usersDietaryRestrictions UserDietaryRestriction[]
 }
 

@@ -145,8 +145,52 @@ async function main() {
   const userDietaryRestrictions = [
     {
       user_id: 1,
-      dietaryRestriction_id : 1
+      dietaryRestriction_id: 1
     },
+    {
+      user_id: 1,
+      dietaryRestriction_id: 2
+    },
+    {
+      user_id: 1,
+      dietaryRestriction_id: 3
+    },
+    {
+      user_id: 2,
+      dietaryRestriction_id: 4
+    },
+    {
+      user_id: 2,
+      dietaryRestriction_id: 5
+    },
+    {
+      user_id: 2,
+      dietaryRestriction_id: 6
+    },
+    {
+      user_id: 3,
+      dietaryRestriction_id: 7
+    },
+    {
+      user_id: 3,
+      dietaryRestriction_id: 8
+    },
+    {
+      user_id: 3,
+      dietaryRestriction_id: 9
+    },
+    {
+      user_id: 1,
+      dietaryRestriction_id: 10
+    },
+    {
+      user_id: 2,
+      dietaryRestriction_id: 11
+    },
+    {
+      user_id: 3,
+      dietaryRestriction_id: 12
+    }
   ];
 
 

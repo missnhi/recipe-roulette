@@ -2,12 +2,12 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-async function getAllDietaryRestrictions() {
+export async function getAllDietaryRestrictions() {
   return prisma.dietaryRestriction.findMany();
 }
 /**select DietaryRestrictions */
 
-async function getFavouriteByEmail(email) {
+export async function getFavouriteByEmail(email) {
   const favourites = await prisma.favourite.findMany({
     where: {
       user: {
@@ -25,7 +25,7 @@ JOIN Favourite ON Recipe.id = Favourite.recipe_id
 WHERE Favourite.user_id = 1
  */
 
-async function getIngredientsByRecipeId(recipeId) {
+export async function getIngredientsByRecipeId(recipeId) {
   const ingredients = await prisma.recipe.findUnique({
     where: {
       id: recipeId,
@@ -37,7 +37,7 @@ async function getIngredientsByRecipeId(recipeId) {
 
   return ingredients.ingredients.map((ingredient) => ingredient);
 }
-async function getUserDietaryRestrictions(email) {
+export async function getUserDietaryRestrictions(email) {
   // Implementation here
   const userRestrictions = await prisma.userDietaryRestriction.findMany({
     where: {

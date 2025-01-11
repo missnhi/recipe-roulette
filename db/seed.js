@@ -143,7 +143,10 @@ async function main() {
   ];
 
   const userDietaryRestrictions = [
-
+    {
+      user_id: 1,
+      dietaryRestriction_id : 1
+    },
   ];
 
 
@@ -183,6 +186,19 @@ async function main() {
       where: {name: dietaryRestriction.name},
       update: {},
       create: dietaryRestriction
+    })
+  }
+
+  for (const userDietaryRestriction of userDietaryRestrictions){
+    await prisma.userDietaryRestriction.upsert({
+      where: {
+      user_id_dietaryRestriction_id : {
+        user_id: userDietaryRestriction.user_id,
+        dietaryRestriction_id : userDietaryRestriction.dietaryRestriction_id,
+      }
+      },
+      update: {},
+      create: userDietaryRestriction,
     })
   }
 }

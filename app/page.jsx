@@ -9,51 +9,6 @@ import RecipeInfoBoard from "@/components/RecipeInfoBoard";
 export default async function Page({ showRecipe }) {
   const users = await getUsers();
 
-<<<<<<< HEAD
-
-
-
-export default function Home() {
-  const [loading, setLoading] = useState(false);
-  const [showRecipe, setShowRecipe] = useState(false);
-  const [users, setUsers] = useState([])
-  const [recipes, setRecipes] = useState([])
-  const lottieRef = useRef(null);
-  
-
-  useEffect(()=> {
-    const fetchUsers = async() => {
-      const response = await fetch('/api/users');
-      const data = await response.json();
-      setUsers(Array.isArray(data) ? data : []);
-    };
-
-   
-
-    const fetchRecipes = async() => {
-      const response  = await fetch('/api/recipes');
-      const data = await response.json();
-      setRecipes(data);
-    }
-
-    fetchUsers();
-  }, []);
-  
-  const onClickLoading = async () => {
-    console.log('Should now show the recipe');
-    setLoading(true); // Indicate loading has started
-    const apiKey = process.env.SPOONACULAR_API_KEY;
-    const response = await fetch(
-      `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=apples,+flour,+sugar&number=2`
-    );
-    const data = await response.json();
-    console.log("RECIPES", data);
-    setRecipes(data || []);
-    setLoading(false); // Indicate loading has finished
-    setShowRecipe(true);
-  };
-=======
->>>>>>> main
   return (
     <div className='recipe-container'>
       <Script

@@ -2,6 +2,8 @@
 import { useState, useRef } from "react";
 import axios from "axios";
 
+const apiKey = process.env.SPOONACULAR_API_KEY;
+
 // Header Component
 export default function Header({ setShowRecipe }) {
   const [recipes, setRecipes] = useState([]);
@@ -10,7 +12,7 @@ export default function Header({ setShowRecipe }) {
   const onClickLoading = () => {
     axios
       .get(
-        `https://api.spoonacular.com/recipes/findByIngredients?apiKey=3b3e900555184a2ba0698a1598d3f261&ingredients=apples,+flour,+sugar&number=2`
+        `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=apples,+flour,+sugar&number=2`
       )
       .then(({ data }) => {
         console.log(data);
@@ -41,13 +43,37 @@ export default function Header({ setShowRecipe }) {
           </div>
         </button>
         <div className='text-lg'>TO ROLL</div>
-        {recipes &&
-          recipes.map((item) => (
-            <div key={item.id}>
-              <h1>{item.title}</h1>
-              <img src={item.image} />
-            </div>
-          ))}
+        {recipes && (
+          <div>
+            <h1>All Recipes from Spoonacular</h1>
+            <ul>
+              {recipes.map((recipe) => (
+                <li key={recipe.id}>
+                  <h2>{recipe.title}</h2>
+                  <img src={recipe.image} alt={recipe.title} />
+                  <p>ID: {recipe.id}</p>
+                  <p>Likes: {recipe.likes}</p>
+                  <p>
+                    Missed Ingredients Count: {recipe.missedIngredientCount}
+                  </p>
+                  <p>Used Ingredients Count: {recipe.usedIngredientCount}</p>
+                  <h3>Missed Ingredients:</h3>
+                  <ul>
+                    {recipe.missedIngredients.map((ingredient, index) => (
+                      <li key={index}>{ingredient.name}</li>
+                    ))}
+                  </ul>
+                  <h3>Used Ingredients:</h3>
+                  <ul>
+                    {recipe.usedIngredients.map((ingredient, index) => (
+                      <li key={index}>{ingredient.name}</li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </header>
   );

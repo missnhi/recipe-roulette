@@ -1,10 +1,10 @@
-// "use client";
-// import { useState, useEffect } from "react";
 import { PrismaClient } from "@prisma/client";
 import "../styles/lottie.css";
 import "../styles/recipe-div.css";
 import Script from "next/script";
 import Header from "@/components/header";
+import LoginForm from "@/components/LoginForm";
+import RecipeInfoBoard from "@/components/RecipeInfoBoard";
 
 export default async function Page({ showRecipe }) {
   const users = await getUsers();
@@ -27,6 +27,25 @@ export default async function Page({ showRecipe }) {
           </div>
         ))}
         <Header />
+        {showRecipe && (
+          <div>
+            <RecipeInfoBoard></RecipeInfoBoard>
+          </div>
+        )}
+        <div style={{ borderTop: "solid white", backgroundColor: "#480025" }}>
+          <h1>Delete after testing is done!</h1>
+          <h1> USERS</h1>
+          <ul>
+            {users.map((user) => (
+              <li key={user.id}>
+                {" "}
+                {user.name} - {user.email} - {user.password}
+              </li>
+            ))}
+          </ul>
+
+          <LoginForm></LoginForm>
+        </div>
       </main>
     </div>
   );

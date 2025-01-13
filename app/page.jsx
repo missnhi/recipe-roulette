@@ -11,6 +11,7 @@ import RecipeInfoBoard from "./components/RecipeInfoBoard";
 
 
 
+
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [showRecipe, setShowRecipe] = useState(false);
@@ -25,6 +26,8 @@ export default function Home() {
       const data = await response.json();
       setUsers(Array.isArray(data) ? data : []);
     };
+
+   
 
     const fetchRecipes = async() => {
       const response  = await fetch('/api/recipes');

@@ -1,25 +1,25 @@
 footer {
-    background-color: #333;
-    color: #f2f2f2;
-    text-align: center;
-    margin-top: 20px;
-    bottom: 0;
-    width: 100%;
-    height: 60px; /* Set a fixed height */
+  background-color: #333;
+  color: #f2f2f2;
+  text-align: center;
+  margin-top: 20px;
+  bottom: 0;
+  width: 100%;
+  height: 60px; /* Set a fixed height */
 }
 
 footer a {
-    color: #f2f2f2;
-    text-decoration: none;
-    margin: 0 10px;
+  color: #f2f2f2;
+  text-decoration: none;
+  margin: 0 10px;
 }
 
 /* Hover effect for footer links */
 footer a:hover {
-    color: #ddd;
+  color: #ddd;
 }
 
 /* Ensure main content has enough space at the bottom */
 main {
-    padding-bottom: 80px; /* Add padding to the bottom of the main content */
+  padding-bottom: 80px; /* Add padding to the bottom of the main content */
 }

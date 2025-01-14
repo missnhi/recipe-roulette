@@ -8,6 +8,7 @@ import { cookies } from "next/headers";
 export async function POST(req, res) {
   // Parse the request body as JSON
   const data = await req.json();
+  const cookieStore = await cookies();
   const { email, password } = data;
 
   // Log the extracted email and password for debugging purposes
@@ -18,6 +19,11 @@ export async function POST(req, res) {
     .then(isValid => {
       // If the credentials are valid, return a 200 response with a success message
       if (isValid) {
+        /**set the email cookie if the email and password are valid */
+        cookieStore.set ({
+          name: 'email',
+          value: email,
+        })
         return new Response(JSON.stringify({ message: `The Information is valid - Welcome ${email}` }), {
           status: 200,
           headers: {

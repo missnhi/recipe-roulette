@@ -21,6 +21,7 @@ export default async function Page({ showRecipe }) {
         // Callback to log or trigger actions when the Lottie player script is fully loaded
         // onLoad={() => console.log("Lottie Player Script Loaded")}
       />
+
       <main className='recipe-div'>
         {users.map((user) => (
           <div key={user.id}>

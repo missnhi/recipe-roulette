@@ -1,6 +1,9 @@
 /*import prisma from "@/prisma/prisma";
 
 export async function GET(req, res) {
+  const handleLoginFunction = function () {
+
+  }
   return prisma.recipe.findMany()
     .then(recipes => {
       return new Response(JSON.stringify(recipes), {

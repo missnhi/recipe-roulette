@@ -42,3 +42,7 @@ export async function getUserDietaryRestrictions(email, prisma) {
 
   return userRestrictions.map(restriction => restriction.dietaryRestriction);
 }
+
+export async function addRecipeToFavourite(email, prisma){
+  
+}

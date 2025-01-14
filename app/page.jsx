@@ -5,12 +5,14 @@ import Script from "next/script";
 import Header from "@/components/header";
 import LoginForm from "@/components/LoginForm";
 import RecipeInfoBoard from "@/components/RecipeInfoBoard";
+import RootLayout from "./layout";
 
 export default async function Page({ showRecipe }) {
   const users = await getUsers();
 
   return (
     <div className='recipe-container'>
+      
       <Script
         src='https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs'
         type='module'
@@ -18,6 +20,7 @@ export default async function Page({ showRecipe }) {
         // Callback to log or trigger actions when the Lottie player script is fully loaded
         // onLoad={() => console.log("Lottie Player Script Loaded")}
       />
+      
       <main className='recipe-div'>
         {users.map((user) => (
           <div key={user.id}>

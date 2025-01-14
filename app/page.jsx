@@ -5,10 +5,13 @@ import Script from "next/script";
 import Header from "@/components/header";
 import LoginForm from "@/components/LoginForm";
 import RecipeInfoBoard from "@/components/RecipeInfoBoard";
+import FormModal from "@/components/FormModal";
+// import { cookies } from "next/headers";
 
 export default async function Page({ showRecipe }) {
   const users = await getUsers();
-
+  // const cookieStore = await cookies();
+  // const hasCookies = await cookieStore.get("userId");
   return (
     <div className='recipe-container'>
       <Script
@@ -44,14 +47,27 @@ export default async function Page({ showRecipe }) {
             ))}
           </ul>
 
-          <LoginForm></LoginForm>
+          <FormModal />
+
+          {/* <LoginForm /> */}
         </div>
       </main>
     </div>
   );
 }
 
+// All DB queries below in it's own function
 const getUsers = async () => {
+  // Connect
+  const prisma = new PrismaClient();
+  // Get data
+  const users = await prisma.user.findMany();
+  // Disconnect
+  await prisma.$disconnect();
+  return users;
+};
+
+const getRecipes = async () => {
   // Connect
   const prisma = new PrismaClient();
   // Get data

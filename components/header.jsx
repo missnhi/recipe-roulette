@@ -1,13 +1,15 @@
 "use client";
 import { useState, useRef } from "react";
 import axios from "axios";
-
+// import { cookies } from "next/headers";
 const apiKey = process.env.SPOONACULAR_API_KEY;
 
 // Header Component
-export default function Header({ setShowRecipe }) {
+export default async function Header({ setShowRecipe }) {
   const [recipes, setRecipes] = useState([]);
   const lottieRef = useRef(null);
+
+  // const hasCookies = await cookieStore.get("userId");
 
   const onClickLoading = () => {
     axios
@@ -21,6 +23,12 @@ export default function Header({ setShowRecipe }) {
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const addToFav = (recipes) => {
+    // adding to favs you would check to see if they have a cookie
+    //
+    axios.post("/api/recipes", recipes).then(() => {});
   };
 
   return (
@@ -49,6 +57,10 @@ export default function Header({ setShowRecipe }) {
             <ul>
               {recipes.map((recipe) => (
                 <li key={recipe.id}>
+                  {!hasCookie && (
+                    <p onClick={() => addToFav(recipe)}>Add to Fav</p>
+                  )}
+
                   <h2>{recipe.title}</h2>
                   <img src={recipe.image} alt={recipe.title} />
                   <p>ID: {recipe.id}</p>

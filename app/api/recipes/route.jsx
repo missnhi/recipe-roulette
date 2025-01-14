@@ -38,3 +38,18 @@ export async function GET(req, res) {
   await prisma.$disconnect();
   return NextResponse.json({ recipes }, { status: 201 });
 }
+
+export async function POST(req, res) {
+  // Connect
+  const prisma = new PrismaClient();
+
+  // Get data
+  const data = await req.json();
+  console.log(data);
+
+  // prisma.recipe.create
+
+  // Disconnect
+  await prisma.$disconnect();
+  return NextResponse.json({ recipes }, { status: 201 });
+}

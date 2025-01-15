@@ -6,6 +6,7 @@ import Header from "@/components/header";
 import LoginForm from "@/components/LoginForm";
 import RecipeInfoBoard from "@/components/RecipeInfoBoard";
 import FormModal from "@/components/FormModal";
+import Navbar from "@/components/navbar";
 // import { cookies } from "next/headers";
 
 export default async function Page({ showRecipe }) {
@@ -30,7 +31,7 @@ export default async function Page({ showRecipe }) {
             </h1>
           </div>
         ))}
-        <Header />
+        <Header showRecipe= {showRecipe} />
         {showRecipe && (
           <div>
             <RecipeInfoBoard></RecipeInfoBoard>

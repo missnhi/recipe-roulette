@@ -1,4 +1,4 @@
-"use cliient";
+"use client";
 import { useState } from "react";
 
 // Custom hook to manage recipe state

@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import LoginForm from "./LoginForm";
 
 const style = {
   position: "absolute",
@@ -24,7 +25,7 @@ export default function FormModal() {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button onClick={handleOpen}>Sign In</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -36,7 +37,7 @@ export default function FormModal() {
             Update and add stuff for the modal
           </Typography>
           <Typography id='modal-modal-description' sx={{ mt: 2 }}>
-            Change stuff around
+            <LoginForm/>
           </Typography>
         </Box>
       </Modal>

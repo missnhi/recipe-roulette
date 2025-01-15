@@ -1,4 +1,5 @@
 import { metadata } from "./head";
+import "../styles/navbar.css"
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Geist, Geist_Mono, Exo_2, Lexend } from "next/font/google";

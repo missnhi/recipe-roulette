@@ -1,8 +1,8 @@
 import { metadata } from "./head";
+// import "../styles/globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Geist, Geist_Mono, Exo_2, Lexend } from "next/font/google";
-// import "./globals.css";
 // import { useRecipeState } from "@/hooks/useRecipeState"; // Import the custom hook
 
 // Load the Geist Sans font for primary sans-serif text

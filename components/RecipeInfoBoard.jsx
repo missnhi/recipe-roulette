@@ -1,3 +1,6 @@
+// import "../styles/recipe-info.css";
+
+// Recipe Info Component
 import React from "react";
 import FavButton from "./FavButton";
 import "@/styles/recipe-div.css";

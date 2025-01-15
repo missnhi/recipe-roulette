@@ -3,7 +3,7 @@ import "../styles/lottie.css";
 import "../styles/recipe-div.css";
 import Script from "next/script";
 import Header from "@/components/header";
-import LoginForm from "@/components/LoginForm";
+// import LoginForm from "@/components/LoginForm";
 import RecipeInfoBoard from "@/components/RecipeInfoBoard";
 import FormModal from "@/components/FormModal";
 // import { cookies } from "next/headers";

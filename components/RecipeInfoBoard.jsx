@@ -8,6 +8,7 @@ import FavButton from "./FavButton";
 import "@/styles/recipe-div.css";
 import "@/styles/fav-button.css";
 import axios from "axios";
+import FavBar from "./fav-bar";
 
 const apiKey = process.env.SPOONACULAR_API_KEY;
 export default function RecipeInfoBoard({ recipe }) {
@@ -57,6 +58,9 @@ export default function RecipeInfoBoard({ recipe }) {
               <li key={index}>{step.step}</li>
             ))}
         </ol>
+      </div>
+      <div style={{ marginTop: '10px', borderColor: 'wheat' }}>
+      {/* <FavBar email = {"alice@prisma.io"}/> */}
       </div>
     </div>
   );

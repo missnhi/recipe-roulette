@@ -27,18 +27,22 @@ export default function RecipeInfoBoard({ recipe }) {
 
   return (
     <div>
-      <FavButton altText='Favorite' className='fav-button' recipe = {recipe} recipeInfo = {recipeInfo}/>
+      <FavButton
+        altText='Favorite'
+        className='fav-button'
+        recipe={recipe}
+        recipeInfo={recipeInfo}
+      />
       <div className='recipe-div'>
-        {recipe && <h2 className='recipe-title'>{recipe.title}</h2>}
-        <img
-          className='recipe-image'
-          src= {recipe.image}
-          alt={recipe.title}
-        />
-         <div className='recipe-info'>
-          <div className='recipe-prep-time'>Prep-time: {recipeInfo.readyInMinutes || "30 Minutes"} minutes</div>
+        {recipe && <h1 className='recipe-title'>{recipe.title}</h1>}
+        <img className='recipe-image' src={recipe.image} alt={recipe.title} />
+        <div className='recipe-info'>
+          <div className='recipe-prep-time'>
+            <strong>PREP-TIME:</strong>{" "}
+            {recipeInfo.readyInMinutes || "30 Minutes"} minutes
+          </div>
           <div className='recipe-ingredients'>
-            <h3 className='text-xl font-semibold mb-2'>Ingredients:</h3>
+            <h2>INGREDIENTS:</h2>
             <ul>
               {recipeInfo.extendedIngredients &&
                 recipeInfo.extendedIngredients.map((ingredient, index) => (
@@ -47,7 +51,7 @@ export default function RecipeInfoBoard({ recipe }) {
             </ul>
           </div>
         </div>
-        <h3 className='text-xl font-semibold mb-2'>Instructions:</h3>
+        <h2 className='recipe-instructions'>INSTRUCTIONS:</h2>
         <ol>
           {recipeInfo.analyzedInstructions &&
             recipeInfo.analyzedInstructions[0].steps.map((step, index) => (

@@ -3,10 +3,9 @@ import "../styles/lottie.css";
 import "../styles/recipe-div.css";
 import Script from "next/script";
 import Header from "@/components/header";
-import LoginForm from "@/components/LoginForm";
 import RecipeInfoBoard from "@/components/RecipeInfoBoard";
 import FormModal from "@/components/FormModal";
-import Navbar from "@/components/navbar";
+
 // import { cookies } from "next/headers";
 
 export default async function Page({ showRecipe }) {
@@ -24,19 +23,14 @@ export default async function Page({ showRecipe }) {
       />
 
       <main className='recipe-div'>
-        {/* {users.map((user) => (
-          <div key={user.id}>
-            <h1>
-              Email: {user.email} Name: {user.name}{" "}
-            </h1>
-          </div>
-        ))} */}
         <Header showRecipe= {showRecipe} />
         {showRecipe && (
           <div >
             <RecipeInfoBoard></RecipeInfoBoard>
           </div>
         )}
+
+
         <div style={{ borderTop: "solid white", backgroundColor: "#480025" }}>
           <h1>Delete after testing is done!</h1>
           <h1> USERS</h1>

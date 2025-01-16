@@ -1,32 +1,50 @@
-import React from "react";
+"use client"
+import React, { useEffect, useState } from "react";
 import FavButton from "./FavButton";
 import "@/styles/recipe-div.css";
 import "@/styles/fav-button.css";
-export default function RecipeInfoBoard({}) {
+import axios from "axios";
+
+const apiKey = process.env.SPOONACULAR_API_KEY;
+export default function RecipeInfoBoard({recipe}) {
+  //console.log(recipe.image);
+  const [recipeInfo, setRecipeInfo] = useState([])
+    useEffect(() => {
+      axios.get(
+        `https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=${apiKey}`
+      ).then(({ data }) => {
+        console.log(data);
+        setRecipeInfo(data)
+      }).catch(err => console.log(err));
+    }, [recipe.id]);
+  
   return (
     <div>
       <FavButton altText='Favorite' className='fav-button' />
       <div className='recipe-div'>
-        <h2 className='recipe-title'>BANANA BREAD</h2>
+        {recipe && <h2 className='recipe-title'>{recipe.title}</h2>}
         <img
           className='recipe-image'
-          src='https://i0.wp.com/www.livewellbakeoften.com/wp-content/uploads/2018/01/Banana-Nut-Bread.jpg?'
-          alt='Banana Nut Bread'
+          src= {recipe.image}
+          alt={recipe.title}
         />
-        <div className='recipe-info'>
-          <div className='recipe-prep-time'>Prep-time:</div>
-          <div className='recipe-ingerdients'>
+         <div className='recipe-info'>
+          <div className='recipe-prep-time'>Prep-time: {recipeInfo.readyInMinutes} minutes</div>
+          <div className='recipe-ingredients'>
             <h3 className='text-xl font-semibold mb-2'>Ingredients:</h3>
-            <ul className=''>
-              {/* {ingredients.map((ingredient, index) => (
-            <li key={index}>{ingredient}</li>
-          ))} */}
-              INGREDIENTS
+            <ul>
+              {recipeInfo.extendedIngredients && recipeInfo.extendedIngredients.map((ingredient, index) => (
+                <li key={index}>{ingredient.original}</li>
+              ))}
             </ul>
           </div>
         </div>
         <h3 className='text-xl font-semibold mb-2'>Instructions:</h3>
-        <p>INSTRUCTIONS</p>
+        <ol>
+          {recipeInfo.analyzedInstructions && recipeInfo.analyzedInstructions[0].steps.map((step, index) => (
+            <li key={index}>{step.step}</li>
+          ))}
+        </ol>
       </div>
     </div>
   );

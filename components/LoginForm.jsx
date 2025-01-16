@@ -3,7 +3,6 @@ import handleLoginFormSubmit from "../app/helpers/handleLoginFormSubmit";
 import { useState } from "react";
 
 export default function LoginForm() {
-  const [isLogin, setIsLogin] = useState(false);
   return (
     <div>
       {!isLogin && (

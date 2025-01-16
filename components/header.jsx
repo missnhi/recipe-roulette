@@ -1,6 +1,7 @@
-"use client"
+"use client";
 import { useState, useRef } from "react";
 import axios from "axios";
+import RecipeInfoBoard from "./RecipeInfoBoard";
 // import { cookies } from "next/headers";
 const apiKey = process.env.SPOONACULAR_API_KEY;
 
@@ -9,12 +10,17 @@ export default function Header({ setShowRecipe }) {
   const [recipes, setRecipes] = useState([]);
   const lottieRef = useRef(null);
 
+  const userSelection = {
+    ingredients: ["flour", "sugar", "rice"],
+    cuisine: "",
+    meal: "",
+  };
   // const hasCookies = await cookieStore.get("userId");
 
-  const onClickLoading = () => {
+  const onClickLoading =  () => {
     axios
       .get(
-        `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=apples,+flour,+sugar&number=2`
+        `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=${userSelection.ingredients.join(',+')}&number=1`
       )
       .then(({ data }) => {
         console.log(data);
@@ -23,6 +29,7 @@ export default function Header({ setShowRecipe }) {
       .catch((err) => {
         console.log(err);
       });
+    
   };
 
   // const addToFav = (recipes) => {
@@ -32,35 +39,34 @@ export default function Header({ setShowRecipe }) {
   // };
 
   return (
-    <header className='flex items-center justify-center bg-transparent h-screen border border-black w-full mt-1 text-white'>
-      <div className='flex items-center space-x-4'>
-        <div className='text-lg'>CLICK</div>
+    <header className="flex items-center justify-center bg-transparent h-screen border border-black w-full mt-1 text-white">
+      <div className="flex items-center space-x-4">
+        <div className="text-lg">CLICK</div>
         <button
-          onClick={onClickLoading}
-          className='bg-transparent border-none cursor-pointer'
+          onClick={ onClickLoading}
+          className="bg-transparent border-none cursor-pointer"
         >
           <div ref={lottieRef}>
             <dotlottie-player
-              src='https://lottie.host/cf4b572d-fada-4365-aa08-b3a0545cef4a/WtIaO5mAdH.lottie'
-              background='transparent'
-              speed='1'
-              className='w-[200px] h-[200px]'
+              src="https://lottie.host/cf4b572d-fada-4365-aa08-b3a0545cef4a/WtIaO5mAdH.lottie"
+              background="transparent"
+              speed="1"
+              className="w-[200px] h-[200px]"
               loop
               autoplay={true}
             ></dotlottie-player>
           </div>
         </button>
-        <div className='text-lg'>TO ROLL</div>
+        <div className="text-lg">TO ROLL</div>
         {recipes && (
           <div>
-            <h1>All Recipes from Spoonacular</h1>
+            {/* <h1>All Recipes from Spoonacular</h1> */}
             <ul>
-              {recipes.map((recipe) => (
+              {
+                recipes.map ((recipe) => <RecipeInfoBoard key = {recipe.id} recipe = {recipe}/>)
+              }
+              {/* {recipes.map((recipe) => (
                 <li key={recipe.id}>
-                  {/* {!hasCookie && (
-                    <p onClick={() => addToFav(recipe)}>Add to Fav</p>
-                  )} */}
-
                   <h2>{recipe.title}</h2>
                   <img src={recipe.image} alt={recipe.title} />
                   <p>ID: {recipe.id}</p>
@@ -82,7 +88,7 @@ export default function Header({ setShowRecipe }) {
                     ))}
                   </ul>
                 </li>
-              ))}
+              ))} */}
             </ul>
           </div>
         )}

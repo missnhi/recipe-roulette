@@ -5,18 +5,19 @@ import "@/styles/recipe-div.css";
 import "@/styles/fav-button.css";
 import axios from "axios";
 
+
 const apiKey = process.env.SPOONACULAR_API_KEY;
 export default function RecipeInfoBoard({recipe}) {
-  //console.log(recipe.image);
   const [recipeInfo, setRecipeInfo] = useState([])
     useEffect(() => {
       axios.get(
         `https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=${apiKey}`
       ).then(({ data }) => {
-        console.log(data);
+        //console.log(data);
         setRecipeInfo(data)
       }).catch(err => console.log(err));
     }, [recipe.id]);
+
   
   return (
     <div>

@@ -7,7 +7,7 @@ const apiKey = process.env.SPOONACULAR_API_KEY;
 
 // Header Component
 export default function Header({ setShowRecipe }) {
-  const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useState(null);
   const lottieRef = useRef(null);
 
   const userSelection = {
@@ -20,7 +20,8 @@ export default function Header({ setShowRecipe }) {
   const onClickLoading =  () => {
     axios
       .get(
-        `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=${userSelection.ingredients.join(',+')}&number=1`
+        // `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=${userSelection.ingredients.join(',+')}&number=1`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&includeIngredients=${userSelection.ingredients.join(',')}&number=1&addRecipeInformation=true&addRecipeInstructions=true&sort=random`
       )
       .then(({ data }) => {
         console.log(data);
@@ -63,7 +64,9 @@ export default function Header({ setShowRecipe }) {
             {/* <h1>All Recipes from Spoonacular</h1> */}
             <ul>
               {
-                recipes.map ((recipe) => <RecipeInfoBoard key = {recipe.id} recipe = {recipe}/>)
+                //recipes.map ((recipe) => <RecipeInfoBoard key = {recipe.id} recipe = {recipe}/>)
+                <RecipeInfoBoard key = {recipes.results[0].id} recipe = {recipes.results[0]}/>
+
               }
               {/* {recipes.map((recipe) => (
                 <li key={recipe.id}>

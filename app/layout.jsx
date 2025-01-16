@@ -1,5 +1,5 @@
 import { metadata } from "./head";
-// import "../styles/globals.css";
+import "../styles/globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Geist, Geist_Mono, Exo_2, Lexend } from "next/font/google";
@@ -50,12 +50,10 @@ export default function RootLayout({ children }) {
 
         <link rel='preconnect' href='https://unpkg.com' />
       </head>
-      <body className='antialiased flex flex-col min-h-screen'>
+      <body>
         <Navbar />
 
-        <main id='content' className='flex-grow'>
-          {children}
-        </main>
+        <main>{children}</main>
 
         <Footer />
       </body>

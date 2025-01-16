@@ -1,17 +1,24 @@
 /* styles/lottie.css */
 .dotlottie-player-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-    background: transparent;
-    margin-top: 100px;
-    
-    border-radius: 1%;
-    border-color: transparent;
-    border-style: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 180px; /* Set an explicit height */
+  background: transparent;
+  margin: 50px 10px;
+  border-radius: 1%;
+  border-color: transparent;
+  border-style: hidden;
 }
-.dotlottie-button{
-    background: transparent;
-    border: transparent;
+
+.dotlottie-button {
+  background: transparent;
+  border: transparent;
+  padding: 0; /* Remove any padding around the button */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.dotlottie-player {
+  width: 60px; /* Adjust size of the Lottie animation */
+  height: 60px;
 }

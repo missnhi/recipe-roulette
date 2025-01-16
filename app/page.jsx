@@ -1,11 +1,10 @@
 import { PrismaClient } from "@prisma/client";
-import "../styles/lottie.css";
 import "../styles/recipe-div.css";
 import Script from "next/script";
 import Header from "@/components/header";
-// import LoginForm from "@/components/LoginForm";
 import RecipeInfoBoard from "@/components/RecipeInfoBoard";
 import FormModal from "@/components/FormModal";
+// import LoginForm from "@/components/LoginForm";
 // import { cookies } from "next/headers";
 
 export default async function Page({ showRecipe }) {
@@ -36,7 +35,17 @@ export default async function Page({ showRecipe }) {
             <RecipeInfoBoard></RecipeInfoBoard>
           </div>
         )}
-        <div style={{ borderTop: "solid white", backgroundColor: "#480025" }}>
+        <div
+          className='test-div'
+          style={{
+            borderTop: "solid white",
+            backgroundColor: "#480025",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <h1>Delete after testing is done!</h1>
           <h1> USERS</h1>
           <ul>
@@ -47,11 +56,11 @@ export default async function Page({ showRecipe }) {
               </li>
             ))}
           </ul>
-
-          <FormModal />
-
-          {/* <LoginForm /> */}
         </div>
+
+        <FormModal />
+
+        {/* <LoginForm /> */}
       </main>
     </div>
   );

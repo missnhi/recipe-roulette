@@ -1,4 +1,5 @@
-// import "../styles/recipe-info.css";
+import "../styles/recipe-info.css";
+import "../styles/recipe-div.css";
 
 // Recipe Info Component
 import React from "react";
@@ -8,7 +9,7 @@ import "@/styles/fav-button.css";
 export default function RecipeInfoBoard({}) {
   return (
     <div>
-      <FavButton altText='Favorite' className='fav-button' />
+      <FavButton altText='Favourite' className='fav-button' />
       <div className='recipe-div'>
         <h2 className='recipe-title'>BANANA BREAD</h2>
         <img

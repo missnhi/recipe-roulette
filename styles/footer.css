@@ -28,6 +28,11 @@ footer p {
   color: wheat;
 }
 
+footer span {
+  color: #000000;
+  font-size: smaller;
+}
+
 footer .link-container {
   display: flex;
   justify-content: center;
@@ -39,6 +44,8 @@ footer .link-container a {
   color: #e5e7eb;
   text-decoration: none;
   transition: color 0.3s ease;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 footer .link-container a:hover {

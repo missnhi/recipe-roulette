@@ -4,12 +4,34 @@ import "../styles/footer.css";
 const Footer = () => {
   return (
     <footer className='footer'>
-      <p>Made In Canada 🍁</p>
+      <p>Made By Foodies In Canada 🍁</p>
       <div className='link-container'>
-        <a href='#'>Link 1</a>
-        <a href='#'>Link 2</a>
-        <a href='#'>Link 3</a>
+        <a
+          href='https://github.com/anthonyChuks1'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          Anthony Anuebunwa
+        </a>
+        <a
+          href='https://github.com/MichaelJGryzz'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          Michael J. Gryschuk
+        </a>
+        <a
+          href='https://github.com/missnhi'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          Nhi Phan
+        </a>
       </div>
+      <span>
+        © {new Date().getFullYear()} Recipe Roulette Canada. All rights
+        reserved.
+      </span>
     </footer>
   );
 };

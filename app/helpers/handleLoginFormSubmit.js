@@ -52,4 +52,7 @@ export default async function handleLoginFormSubmit(e) {
       // Log any errors that occur during the fetch request
       console.error("Error:", error);
     });
+
+    window.location.reload()
+    window.location.reload()
 }

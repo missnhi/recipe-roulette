@@ -3,15 +3,13 @@
 import "../styles/navbar.css";
 import { cookies } from "next/headers";
 import SignInModal from "./sign-in-modal";
+import SignOutButton from "./sign-out-button";
 
 const Navbar = async () => {
   const value = cookies();
   const emailCookie = await value.get("email");
   const email = emailCookie?.value || "";
 
-  const onSignOut = async () => {
-    (await cookies()).delete('email')
-  }
   return (
     <nav className="bg-custom-gray-700 text-gray-200 fixed w-full flex justify-between py-4 px-4">
       <div className="flex">
@@ -45,20 +43,14 @@ const Navbar = async () => {
       {console.log(`email cookie is ${email}`)}
       {email ? (
         <div className="flex">
-           {email}
+          {email} <SignOutButton />
         </div>
       ) : (
         <div className="flex">
-          <a
-            
-            className="text-[#f2f2f2] text-center px-4 py-3 hover:text-gray-300 transition-colors"
-          >
-            <SignInModal/>
+          <a className="text-[#f2f2f2] text-center px-4 py-3 hover:text-gray-300 transition-colors">
+            <SignInModal />
           </a>
-          <a
-            
-            className="text-[#f2f2f2] text-center px-4 py-3 hover:text-gray-300 transition-colors"
-          >
+          <a className="text-[#f2f2f2] text-center px-4 py-3 hover:text-gray-300 transition-colors">
             Sign Up
           </a>
         </div>

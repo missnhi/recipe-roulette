@@ -12,7 +12,7 @@ export default function LoginForm() {
           <input type='text' id='email'></input>
           <label>Password: </label>
           <input type='text' id='password'></input>
-          <button type='submit'>Submit</button>
+          <button type='submit' >Submit</button>
         </form>
       )}
     </div>

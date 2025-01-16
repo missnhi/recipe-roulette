@@ -1,9 +1,8 @@
 import { metadata } from "./head";
-import "../styles/navbar.css"
+import "../styles/globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Geist, Geist_Mono, Exo_2, Lexend } from "next/font/google";
-// import "./globals.css";
 // import { useRecipeState } from "@/hooks/useRecipeState"; // Import the custom hook
 
 // Load the Geist Sans font for primary sans-serif text
@@ -51,12 +50,10 @@ export default function RootLayout({ children }) {
 
         <link rel='preconnect' href='https://unpkg.com' />
       </head>
-      <body className='antialiased flex flex-col min-h-screen'>
+      <body>
         <Navbar />
 
-        <main id='content' className='flex-grow'>
-          {children}
-        </main>
+        <main>{children}</main>
 
         <Footer />
       </body>

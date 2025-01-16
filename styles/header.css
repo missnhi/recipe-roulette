@@ -1,10 +1,26 @@
-header {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    background-color: wheat;
-    
-    height: auto;
-    width: 100%;
-    color: black;
+.header {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: wheat;
+  width: 100%;
+  color: #000000;
+  margin-top: 150px; /* Adjust this value as needed */
+}
+
+.header-container {
+  display: flex;
+  justify-content: center; /* Horizontally centers the items */
+  align-items: center; /* Vertically centers the items */
+  width: 100%; /* Full width to occupy the space */
+  gap: 0; /* Remove any space between the elements */
+}
+
+.header-text {
+  font-size: 20px; /* Adjust the font size as needed */
+  font-weight: 550;
+  color: #000000; /* Or your preferred text color */
+  margin: 0; /* Remove margin to eliminate space between elements */
+  padding: 0; /* Remove padding */
 }

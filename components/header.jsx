@@ -1,6 +1,9 @@
 "use client";
+
 import { useState, useRef } from "react";
 import axios from "axios";
+import "../styles/header.css";
+import "../styles/lottie.css";
 import RecipeInfoBoard from "./RecipeInfoBoard";
 // import { cookies } from "next/headers";
 const apiKey = process.env.SPOONACULAR_API_KEY;
@@ -17,7 +20,7 @@ export default function Header({ setShowRecipe }) {
   };
   // const hasCookies = await cookieStore.get("userId");
 
-  const onClickLoading =  () => {
+  const onClickLoading = () => {
     axios
       .get(
         // `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=${userSelection.ingredients.join(',+')}&number=1`
@@ -30,72 +33,46 @@ export default function Header({ setShowRecipe }) {
       .catch((err) => {
         console.log(err);
       });
-    
   };
 
-  // const addToFav = (recipes) => {
-  //   // adding to favs you would check to see if they have a cookie
-  //   //
-  //   axios.post("/api/recipes", recipes).then(() => {});
-  // };
+  const addToFav = (recipes) => {
+    // adding to favs you would check to see if they have a cookie
+    //
+    axios.post("/api/recipes", recipes).then(() => {});
+  };
 
   return (
-    <header className="flex items-center justify-center bg-transparent h-screen border border-black w-full mt-1 text-white">
-      <div className="flex items-center space-x-4">
-        <div className="text-lg">CLICK</div>
-        <button
-          onClick={ onClickLoading}
-          className="bg-transparent border-none cursor-pointer"
-        >
-          <div ref={lottieRef}>
+    <header className='header'>
+      <div className='header-container'>
+        <div className='header-text'>CLICK</div>
+        <button onClick={onClickLoading} className='dotlottie-button'>
+          <div className='dotlottie-player-container' ref={lottieRef}>
             <dotlottie-player
-              src="https://lottie.host/cf4b572d-fada-4365-aa08-b3a0545cef4a/WtIaO5mAdH.lottie"
-              background="transparent"
-              speed="1"
-              className="w-[200px] h-[200px]"
+              src='https://lottie.host/cf4b572d-fada-4365-aa08-b3a0545cef4a/WtIaO5mAdH.lottie'
+              background='transparent'
+              speed='1'
+              className='dolottie-player'
               loop
               autoplay={true}
             ></dotlottie-player>
           </div>
         </button>
-        <div className="text-lg">TO ROLL</div>
-        {recipes && (
-          <div>
-            {/* <h1>All Recipes from Spoonacular</h1> */}
-            <ul>
-              {
-                //recipes.map ((recipe) => <RecipeInfoBoard key = {recipe.id} recipe = {recipe}/>)
-                <RecipeInfoBoard key = {recipes.results[0].id || 0} recipe = {recipes.results[0] || {}}/>
-
-              }
-              {/* {recipes.map((recipe) => (
-                <li key={recipe.id}>
-                  <h2>{recipe.title}</h2>
-                  <img src={recipe.image} alt={recipe.title} />
-                  <p>ID: {recipe.id}</p>
-                  <p>Likes: {recipe.likes}</p>
-                  <p>
-                    Missed Ingredients Count: {recipe.missedIngredientCount}
-                  </p>
-                  <p>Used Ingredients Count: {recipe.usedIngredientCount}</p>
-                  <h3>Missed Ingredients:</h3>
-                  <ul>
-                    {recipe.missedIngredients.map((ingredient, index) => (
-                      <li key={index}>{ingredient.name}</li>
-                    ))}
-                  </ul>
-                  <h3>Used Ingredients:</h3>
-                  <ul>
-                    {recipe.usedIngredients.map((ingredient, index) => (
-                      <li key={index}>{ingredient.name}</li>
-                    ))}
-                  </ul>
-                </li>
-              ))} */}
-            </ul>
-          </div>
-        )}
+        <div className='header-text'>TO ROLL</div>
       </div>
+      {recipes && (
+        <div className='recipe-container'>
+          {/* <h1>All Recipes from Spoonacular</h1> */}
+          <ul className='recipe-list'>
+            {
+              //recipes.map ((recipe) => <RecipeInfoBoard key = {recipe.id} recipe = {recipe}/>)
+              <RecipeInfoBoard
+                key={recipes.results[0].id}
+                recipe={recipes.results[0]}
+              />
+            }
+          </ul>
+        </div>
+      )}
     </header>
   );
 }

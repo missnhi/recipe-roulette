@@ -1,24 +1,29 @@
-"use client"
+"use client";
+import "../styles/recipe-info.css";
+import "../styles/recipe-div.css";
+
+// Recipe Info Component
 import React, { useEffect, useState } from "react";
 import FavButton from "./FavButton";
 import "@/styles/recipe-div.css";
 import "@/styles/fav-button.css";
 import axios from "axios";
 
-
 const apiKey = process.env.SPOONACULAR_API_KEY;
-export default function RecipeInfoBoard({recipe}) {
-  const [recipeInfo, setRecipeInfo] = useState([])
-    useEffect(() => {
-      axios.get(
+export default function RecipeInfoBoard({ recipe }) {
+  const [recipeInfo, setRecipeInfo] = useState([]);
+  useEffect(() => {
+    axios
+      .get(
         `https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=${apiKey}`
-      ).then(({ data }) => {
+      )
+      .then(({ data }) => {
         //console.log(data);
-        setRecipeInfo(data)
-      }).catch(err => console.log(err));
-    }, [recipe.id]);
+        setRecipeInfo(data);
+      })
+      .catch((err) => console.log(err));
+  }, [recipe.id]);
 
-  
   return (
     <div>
       <FavButton altText='Favorite' className='fav-button' recipe = {recipe} recipeInfo = {recipeInfo}/>
@@ -34,17 +39,19 @@ export default function RecipeInfoBoard({recipe}) {
           <div className='recipe-ingredients'>
             <h3 className='text-xl font-semibold mb-2'>Ingredients:</h3>
             <ul>
-              {recipeInfo.extendedIngredients && recipeInfo.extendedIngredients.map((ingredient, index) => (
-                <li key={index}>{ingredient.original}</li>
-              ))}
+              {recipeInfo.extendedIngredients &&
+                recipeInfo.extendedIngredients.map((ingredient, index) => (
+                  <li key={index}>{ingredient.original}</li>
+                ))}
             </ul>
           </div>
         </div>
         <h3 className='text-xl font-semibold mb-2'>Instructions:</h3>
         <ol>
-          {recipeInfo.analyzedInstructions && recipeInfo.analyzedInstructions[0].steps.map((step, index) => (
-            <li key={index}>{step.step}</li>
-          ))}
+          {recipeInfo.analyzedInstructions &&
+            recipeInfo.analyzedInstructions[0].steps.map((step, index) => (
+              <li key={index}>{step.step}</li>
+            ))}
         </ol>
       </div>
     </div>

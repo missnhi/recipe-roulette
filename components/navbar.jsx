@@ -1,3 +1,5 @@
+import "../styles/navbar.css";
+
 // Navbar Component
 
 import "../styles/navbar.css";
@@ -11,50 +13,39 @@ const Navbar = async () => {
   const email = emailCookie?.value || "";
 
   return (
-    <nav className="bg-custom-gray-700 text-gray-200 fixed w-full flex justify-between py-4 px-4">
-      <div className="flex">
+    <nav className='nav'>
+      <div className='nav-left'>
         {/* Left Side of Navbar */}
-        <a
-          href="#home"
-          className="text-gray-200 text-center px-4 py-3 hover:text-gray-300 transition-colors"
-        >
+        <a href='#home' className='nav-link'>
           Home
         </a>
-        <a
-          href="#about"
-          className="text-gray-200 text-center px-4 py-3 hover:text-gray-300 transition-colors"
-        >
+        <a href='#about' className='nav-link'>
           About
         </a>
-        <a
-          href="#contact"
-          className="text-gray-200 text-center px-4 py-3 hover:text-gray-300 transition-colors"
-        >
+        <a href='#contact' className='nav-link'>
           Contact
         </a>
       </div>
 
       {/* Centre Title of Navbar */}
-      <div className=" nav-title flex items-center text-gray-200 text-3xl font-extrabold text-center px-4 py-3">
-        RECIPE ROULETTE
-      </div>
+      <div className='nav-title'>RECIPE ROULETTE</div>
 
       {/* Right Side of Navbar */}
       {console.log(`email cookie is ${email}`)}
-      {email ? (
-        <div className="flex">
-          {email} <SignOutButton />
-        </div>
-      ) : (
-        <div className="flex">
-          <a className="text-[#f2f2f2] text-center px-4 py-3 hover:text-gray-300 transition-colors">
-            <SignInModal />
-          </a>
-          <a className="text-[#f2f2f2] text-center px-4 py-3 hover:text-gray-300 transition-colors">
-            Sign Up
-          </a>
-        </div>
-      )}
+      <div className='nav-right'>
+        {email ? (
+          <div className='nav-link'>
+            {email} <SignOutButton />
+          </div>
+        ) : (
+          <div className='nav-link'>
+            <a>
+              <SignInModal />
+            </a>
+            <a>Sign Up</a>
+          </div>
+        )}
+      </div>
     </nav>
   );
 };

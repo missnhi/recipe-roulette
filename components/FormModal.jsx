@@ -25,7 +25,7 @@ export default function FormModal() {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Sign In</Button>
+      <Button onClick={handleOpen}>OPEN MODAL</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -37,7 +37,7 @@ export default function FormModal() {
             Update and add stuff for the modal
           </Typography>
           <Typography id='modal-modal-description' sx={{ mt: 2 }}>
-            <LoginForm/>
+            Change Stuff around
           </Typography>
         </Box>
       </Modal>

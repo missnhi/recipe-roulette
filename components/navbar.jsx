@@ -2,12 +2,16 @@
 
 import "../styles/navbar.css";
 import { cookies } from "next/headers";
-import FormModal from "./FormModal";
+import SignInModal from "./sign-in-modal";
 
 const Navbar = async () => {
   const value = cookies();
   const emailCookie = await value.get("email");
   const email = emailCookie?.value || "";
+
+  const onSignOut = async () => {
+    (await cookies()).delete('email')
+  }
   return (
     <nav className="bg-custom-gray-700 text-gray-200 fixed w-full flex justify-between py-4 px-4">
       <div className="flex">
@@ -49,7 +53,7 @@ const Navbar = async () => {
             
             className="text-[#f2f2f2] text-center px-4 py-3 hover:text-gray-300 transition-colors"
           >
-            <FormModal/>
+            <SignInModal/>
           </a>
           <a
             

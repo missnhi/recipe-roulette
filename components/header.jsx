@@ -21,7 +21,7 @@ export default function Header({ setShowRecipe }) {
     axios
       .get(
         // `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=${userSelection.ingredients.join(',+')}&number=1`
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&includeIngredients=${userSelection.ingredients.join(',')}&number=1&addRecipeInformation=true&addRecipeInstructions=true&sort=random`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&includeIngredients=${userSelection.ingredients.join(',')}&fillIngredients=false&number=1&addRecipeInformation=true&addRecipeInstructions=true&sort=random`
       )
       .then(({ data }) => {
         console.log(data);
@@ -65,7 +65,7 @@ export default function Header({ setShowRecipe }) {
             <ul>
               {
                 //recipes.map ((recipe) => <RecipeInfoBoard key = {recipe.id} recipe = {recipe}/>)
-                <RecipeInfoBoard key = {recipes.results[0].id} recipe = {recipes.results[0]}/>
+                <RecipeInfoBoard key = {recipes.results[0].id || 0} recipe = {recipes.results[0] || {}}/>
 
               }
               {/* {recipes.map((recipe) => (

@@ -21,7 +21,7 @@ export default function RecipeInfoBoard({recipe}) {
   
   return (
     <div>
-      <FavButton altText='Favorite' className='fav-button' />
+      <FavButton altText='Favorite' className='fav-button' recipe = {recipe} recipeInfo = {recipeInfo}/>
       <div className='recipe-div'>
         {recipe && <h2 className='recipe-title'>{recipe.title}</h2>}
         <img
@@ -30,7 +30,7 @@ export default function RecipeInfoBoard({recipe}) {
           alt={recipe.title}
         />
          <div className='recipe-info'>
-          <div className='recipe-prep-time'>Prep-time: {recipeInfo.readyInMinutes} minutes</div>
+          <div className='recipe-prep-time'>Prep-time: {recipeInfo.readyInMinutes || "30 Minutes"} minutes</div>
           <div className='recipe-ingredients'>
             <h3 className='text-xl font-semibold mb-2'>Ingredients:</h3>
             <ul>

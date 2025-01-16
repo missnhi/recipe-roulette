@@ -26,9 +26,9 @@ export async function GET(req, res) {
 
 export async function POST(req, res) {
   return req.json()
-    .then(({ name, email }) => {
+    .then(({ name, email, password }) => {
       return prisma.user.create({
-        data: { name, email },
+        data: { name, email, password },
       });
     })
     .then(user => {

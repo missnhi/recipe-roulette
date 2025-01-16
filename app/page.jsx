@@ -24,16 +24,16 @@ export default async function Page({ showRecipe }) {
       />
 
       <main className='recipe-div'>
-        {users.map((user) => (
+        {/* {users.map((user) => (
           <div key={user.id}>
             <h1>
               Email: {user.email} Name: {user.name}{" "}
             </h1>
           </div>
-        ))}
+        ))} */}
         <Header showRecipe= {showRecipe} />
         {showRecipe && (
-          <div>
+          <div >
             <RecipeInfoBoard></RecipeInfoBoard>
           </div>
         )}
@@ -44,12 +44,11 @@ export default async function Page({ showRecipe }) {
             {users.map((user) => (
               <li key={user.id}>
                 {" "}
-                {user.name} - {user.email} - {user.password}
+                {user.id} - {user.name} - {user.email} - {user.password}
               </li>
             ))}
           </ul>
 
-          <FormModal />
 
           {/* <LoginForm /> */}
         </div>

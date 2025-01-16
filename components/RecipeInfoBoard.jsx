@@ -26,13 +26,19 @@ export default function RecipeInfoBoard({ recipe }) {
 
   return (
     <div>
-      <FavButton altText='Favourite' className='fav-button' />
+      <FavButton
+        altText='Favorite'
+        className='fav-button'
+        recipe={recipe}
+        recipeInfo={recipeInfo}
+      />
       <div className='recipe-div'>
         {recipe && <h1 className='recipe-title'>{recipe.title}</h1>}
         <img className='recipe-image' src={recipe.image} alt={recipe.title} />
         <div className='recipe-info'>
           <div className='recipe-prep-time'>
-            <strong>PREP-TIME:</strong> {recipeInfo.readyInMinutes} minutes
+            <strong>PREP-TIME:</strong>{" "}
+            {recipeInfo.readyInMinutes || "30 Minutes"} minutes
           </div>
           <div className='recipe-ingredients'>
             <h2>INGREDIENTS:</h2>

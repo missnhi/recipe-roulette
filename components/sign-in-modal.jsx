@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import LoginForm from "./LoginForm";
+// import "../styles/navbar.css";
 
 const style = {
   position: "absolute",
@@ -34,10 +35,10 @@ export default function SignInModal() {
       >
         <Box sx={style}>
           <Typography id='modal-modal-title' variant='h6' component='h2'>
-            SIGN IN 
+            SIGN IN
           </Typography>
           <Typography id='modal-modal-description' sx={{ mt: 2 }}>
-            <LoginForm/>
+            <LoginForm />
           </Typography>
         </Box>
       </Modal>

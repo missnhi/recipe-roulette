@@ -60,55 +60,21 @@ export default function Header({ setShowRecipe }) {
           </div>
         </button>
         <div className='header-text'>TO ROLL</div>
-        {recipes && (
-          <div className='recipe-container'>
-            {/* <h1>All Recipes from Spoonacular</h1> */}
-            <ul className='recipe-list'>
-              {
-                //recipes.map ((recipe) => <RecipeInfoBoard key = {recipe.id} recipe = {recipe}/>)
-                <RecipeInfoBoard
-                  key={recipes.results[0].id}
-                  recipe={recipes.results[0]}
-                />
-              }
-              {/* {recipes.map((recipe) => (
-                <li key={recipe.id} className='recipe-item'>
-                  <h2 className='recipe-name'>{recipe.title}</h2>
-                  <img 
-                    className='recipe-image'
-                    src={recipe.image}
-                    alt={recipe.title}
-                  />
-                  <p>ID: {recipe.id}</p>
-                  <p>Likes: {recipe.likes}</p>
-                  <p>
-                    Missed Ingredients Count: {recipe.missedIngredientCount}
-                  </p>
-                  <p>Used Ingredients Count: {recipe.usedIngredientCount}</p>
-                  <h3>Missed Ingredients:</h3>
-                  <ul>
-                    {recipe.missedIngredients.map((ingredient, index) => (
-                      <li key={index}>{ingredient.name}</li>
-                    ))}
-                  </ul>
-                  <h3>Used Ingredients:</h3>
-                  <ul>
-                    {recipe.usedIngredients.map((ingredient, index) => (
-                      <li key={index}>{ingredient.name}</li>
-                    ))}
-                  </ul>
-                  {/* <button
-                    onClick={() => addToFav(recipe)}
-                    className='favorite-button'
-                  >
-                    Add to Favorites
-                  </button>
-                </li>
-              ))} */}
-            </ul>
-          </div>
-        )}
       </div>
+      {recipes && (
+        <div className='recipe-container'>
+          {/* <h1>All Recipes from Spoonacular</h1> */}
+          <ul className='recipe-list'>
+            {
+              //recipes.map ((recipe) => <RecipeInfoBoard key = {recipe.id} recipe = {recipe}/>)
+              <RecipeInfoBoard
+                key={recipes.results[0].id}
+                recipe={recipes.results[0]}
+              />
+            }
+          </ul>
+        </div>
+      )}
     </header>
   );
 }

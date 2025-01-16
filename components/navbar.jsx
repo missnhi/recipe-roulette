@@ -38,11 +38,15 @@ const Navbar = async () => {
             {email} <SignOutButton />
           </div>
         ) : (
-          <div className='nav-link'>
-            <a>
-              <SignInModal />
-            </a>
-            <a>Sign Up</a>
+          <div>
+            <div className='nav-link'>
+              <a>
+                <SignInModal />
+              </a>
+            </div>
+            <div className='nav-link'>
+              <a>Create Account</a>
+            </div>
           </div>
         )}
       </div>

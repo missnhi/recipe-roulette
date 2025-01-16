@@ -1,5 +1,4 @@
 import { PrismaClient } from "@prisma/client";
-import "../styles/lottie.css";
 import "../styles/recipe-div.css";
 import Script from "next/script";
 import Header from "@/components/header";
@@ -23,15 +22,23 @@ export default async function Page({ showRecipe }) {
       />
 
       <main className='recipe-div'>
-        <Header showRecipe= {showRecipe} />
+        <Header showRecipe={showRecipe} />
         {showRecipe && (
-          <div >
+          <div>
             <RecipeInfoBoard></RecipeInfoBoard>
           </div>
         )}
-
-
-        <div style={{ borderTop: "solid white", backgroundColor: "#480025" }}>
+        <div
+          className='test-div'
+          style={{
+            borderTop: "solid white",
+            backgroundColor: "#480025",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <h1>Delete after testing is done!</h1>
           <h1> USERS</h1>
           <ul>
@@ -42,10 +49,11 @@ export default async function Page({ showRecipe }) {
               </li>
             ))}
           </ul>
-
-            <FormModal/>
-          {/* <LoginForm /> */}
         </div>
+
+        <FormModal />
+
+        {/* <LoginForm /> */}
       </main>
     </div>
   );

@@ -28,7 +28,7 @@ export default async function Page({ showRecipe }) {
             <RecipeInfoBoard></RecipeInfoBoard>
           </div>
         )}
-        <div
+        {/* <div
           className='test-div'
           style={{
             borderTop: "solid white",
@@ -40,7 +40,7 @@ export default async function Page({ showRecipe }) {
           }}
         >
           <h1>Delete after testing is done!</h1>
-          <h1> USERS</h1>
+          <h1>USERS</h1>
           <ul>
             {users.map((user) => (
               <li key={user.id}>
@@ -49,7 +49,7 @@ export default async function Page({ showRecipe }) {
               </li>
             ))}
           </ul>
-        </div>
+        </div> */}
 
         <FormModal />
 

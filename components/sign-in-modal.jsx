@@ -37,7 +37,11 @@ export default function SignInModal() {
           <Typography id='modal-modal-title' variant='h6' component='h2'>
             SIGN IN
           </Typography>
-          <Typography id='modal-modal-description' sx={{ mt: 2 }}>
+          <Typography
+            id='modal-modal-description'
+            component='div'
+            sx={{ mt: 2 }}
+          >
             <LoginForm />
           </Typography>
         </Box>

@@ -1,5 +1,3 @@
-import "../styles/navbar.css";
-
 // Navbar Component
 
 import "../styles/navbar.css";

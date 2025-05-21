@@ -38,9 +38,7 @@ const Navbar = async () => {
         ) : (
           <div>
             <div className='nav-link'>
-              <a>
-                <SignInModal />
-              </a>
+              <SignInModal />
             </div>
             <div className='nav-link'>
               <a>Create Account</a>

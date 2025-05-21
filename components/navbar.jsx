@@ -8,8 +8,8 @@ import SignInModal from "./sign-in-modal";
 import SignOutButton from "./sign-out-button";
 
 const Navbar = async () => {
-  const value = cookies();
-  const emailCookie = await value.get("email");
+  const cookieStore = await cookies();
+  const emailCookie = cookieStore.get("email");
   const email = emailCookie?.value || "";
 
   return (

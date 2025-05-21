@@ -3,7 +3,7 @@ import "../styles/recipe-div.css";
 import Script from "next/script";
 import Header from "@/components/header";
 import RecipeInfoBoard from "@/components/RecipeInfoBoard";
-import FormModal from "@/components/FormModal";
+import FiltersFormModal from "@/components/FiltersFormModal";
 
 // import { cookies } from "next/headers";
 
@@ -51,7 +51,7 @@ export default async function Page({ showRecipe }) {
           </ul>
         </div> */}
 
-        {/* <FormModal /> */}
+        {/* <FiltersFormModal /> */}
 
         {/* <LoginForm /> */}
       </main>
